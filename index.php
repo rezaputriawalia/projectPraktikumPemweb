@@ -8,5 +8,7 @@
 <body>
     <h1>ini nyoba</h1>
     <h3>cantika nambah ini</h3>
+    <h1>apa kek bebas</h1>
+    <h2>ini edit</h2>
 </body>
 </html>
