@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/styledashboardyaaa.css">
     <title>Dashboard UI</title>
 
 </head>
@@ -19,8 +19,15 @@
                 <h5 style="width : 75%">Dari kelemahan hingga pencapaian, kami menemanimu dalam perjalanan menerima dan menyayangi diri sendiri sepenuhnya.</h5>
             </div>
             <div class="profil">
-                <a href="profil.php" class="btn btn-light btn-outline-dark">Profil</a>
+                <button class="profile-btn" onclick="toggleProfileMenu()">👤 Profil ▾</button>
+
+                <div class="dropdown-menu" id="profileMenu">
+                    <a href="editprofil.php">✏ Edit Profil</a> <br>
+                    <a href="logout.php" class="logout">🚪 Logout</a>
+                </div>
             </div>
+
+
         </div>
 
 
@@ -38,7 +45,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Catat Mood Harianmu!</h4>
                     <p class="card-text">Jangan Menunggu Badai Berlalu, Belajarlah Menari di Tengah Hujan.</p>
-                    <a href="mood.php" class="btn btn-primary">Catat Disini  ^_^</a>
+                    <a href="moodtracker.php" class="btn btn-primary">Catat Disini ^_^</a>
                 </div>
             </div>
         </div>
@@ -48,7 +55,7 @@
                 <img src="https://klinikkeluarga.com/assets/uploads/artikels/klinik-keluarga-pentingnya-gaya-hidup-sehat-menjaga-kesehatan-tubuh-dan-pikiran.jpg" class="card-img-top" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Pola Hidup Sehat Remaja</h4>
-                    <p class="card-text">Semua orang pasti ingin selalu hidup sehat dan terhindar dari berbagai penyakit. Sebab, dengan tubuh  dan pikiran yang selalu sehat, seagala aktivitas yang kita kerjakan akan selesai lebih cepat.</p>
+                    <p class="card-text">Semua orang pasti ingin selalu hidup sehat dan terhindar dari berbagai penyakit. Sebab, dengan tubuh dan pikiran yang selalu sehat, seagala aktivitas yang kita kerjakan akan selesai lebih cepat.</p>
                     <a href="https://diskes.badungkab.go.id/artikel/51691-pola-hidup-sehat-remaja" class="btn btn-primary">Lihat Artikel</a>
                 </div>
             </div>
@@ -70,6 +77,24 @@
             </div>
         </div>
     </div>
+    <script>
+        function toggleProfileMenu() {
+            const menu = document.getElementById("profileMenu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        document.addEventListener("click", function(event) {
+            const menu = document.getElementById("profileMenu");
+            const btn = document.querySelector(".profile-btn");
+
+            if (!btn.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = "none";
+            }
+        });
+    </script>
+
+
+
 </body>
 
 </html>
