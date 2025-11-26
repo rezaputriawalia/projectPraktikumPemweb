@@ -1,6 +1,10 @@
 <?php 
-
 require "config/koneksi.php";
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?pesan=login_dulu");
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +22,7 @@ require "config/koneksi.php";
 </head>
 <body>
     <div class="back">
-        <img src="asset/image/back.png" alt="">
+        <a href="dashboard.php" class="btn btn-light btn-outline-dark">← Back</a>
     </div>
     <div class="container">
         <div class="judul">
