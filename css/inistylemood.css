@@ -1,226 +1,152 @@
 :root {
-  --cream: #FBE4D8;
-  --rose: #DFB6B2;
-  --mauve: #854F6C;
-  --dark-plum: #522B5B;
-  --deep-purple: #2B124C;
-  --shadow: 0 10px 20px rgba(0,0,0,0.10);
+    --ungu-tua: #190019;
+    --ungu-gelap: #2B124C;
+    --ungu: #522B5B;
+    --ungu-muda: #854F6C;
+    --cream: #DFB6B2;
+    --cream-muda: #FBE4D8;
+
+    --radius: 20px;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 body {
-  background: #f6f5f7;
-  font-family: "Poppins";
-  margin: 0;
-  padding: 0;
-  color: var(--deep-purple);
-  letter-spacing: .2px;
-  transition: .3s ease;
+    background: #f6f5f7;
+    font-family: 'Poppins';
+    color: #3B2D5E;
 }
 
-/* ========= Dashboard Back Button ========= */
-
 .dashboard {
-  padding: 20px;
+    padding: 20px;
 }
 
 .dashboard .btn {
-  background: var(--cream);
-  color: var(--deep-purple);
-  border: 2px solid var(--mauve);
-  padding: 10px 22px;
-  border-radius: 16px;
-  font-weight: 600;
-  transition: .3s ease;
+    background: white;
+    color: var(--deep-purple);
+    border: 2px solid var(--mauve);
+    padding: 10px 22px;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: .3s ease;
 }
 
 .dashboard .btn:hover {
-  background: var(--rose);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
+    background: var(--rose);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
-
-/* ========= Main Container Card ========= */
 
 .container {
-  max-width: 520px;
-  margin: 30px auto;
-  background: var(--rose);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  animation: fadeIn .5s ease;
+    max-width: 500px;
+    margin-top: 40px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.back-btn {
+    background: white;
+    border: 1px solid #3B2D5E;
 }
 
-h1 {
-  color: var(--deep-purple);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 5px;
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.subtitle {
-  text-align: center;
-  color: var(--dark-plum);
-  font-size: 14px;
-  margin-bottom: 15px;
+.tab {
+    width: 32%;
+    border: none;
+    padding: 10px;
+    background: #ddd;
+    color: #3B2D5E;
+    border-radius: 6px;
+    font-weight: 600;
 }
 
-/* ========= Mood Jar Card ========= */
-
-.mood-card {
-  background: var(--cream);
-  border-radius: 18px;
-  border: 2px solid var(--mauve);
-  padding: 20px;
-  height: 250px;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s ease;
+.tab.active {
+    background: #3B2D5E;
+    color: white;
 }
 
-.mood-card:hover {
-  transform: scale(1.01);
+.page {
+    display: none;
 }
 
-/* JAR + STARS */
+.page.active {
+    display: block;
+}
+
+.jar-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px #d6d3dd;
+}
 
 #jar {
-  width: 200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-#stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+    width: 170px;
+    height: 200px;
+    border: 3px solid #3B2D5E;
+    border-radius: 20px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .star {
-  position: absolute;
-  font-size: 24px;
-  opacity: 0;
-  animation: pop .5s forwards ease-out;
+    position: absolute;
+    font-size: 24px;
+    opacity: .9;
 }
 
-.star.great { color: var(--deep-purple); }
-.star.good { color: var(--dark-plum); }
-.star.average { color: var(--mauve); }
-.star.bad { color: #5f3a3a; }
+.star.great { color: #ffd700; }
+.star.good { color: #85c46c; }
+.star.average { color: #f2b880; }
+.star.bad { color: #e57373; }
 
-@keyframes pop {
-  0% { transform: scale(0); opacity: 0; filter: blur(3px);} 
-  80% { transform: scale(1.3);} 
-  100% { transform: scale(1); opacity: 1; filter: blur(0);} 
+.primary-btn {
+    margin-top: 20px;
+    background: #3B2D5E;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
 }
 
-/* ========= Buttons ========= */
-
-button {
-  width: 100%;
-  padding: 13px;
-  border: none;
-  background: var(--dark-plum);
-  color: var(--cream);
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: 18px;
-  cursor: pointer;
-  transition: .3s ease;
-}
-
-button:hover {
-  background: var(--deep-purple);
-  transform: translateY(-2px);
-}
-
-/* ========= Form ========= */
-
-.mood-group {
-  margin-top: 15px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--deep-purple);
-}
-
-select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 2px solid var(--dark-plum);
-  background: var(--cream);
-  font-size: 15px;
-  color: var(--deep-purple);
-  cursor: pointer;
-  transition: .2s ease;
-}
-
-select:hover {
-  border-color: var(--deep-purple);
-}
-
-/* Tabs */
-.nav-tabs {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.nav-tabs .tab {
-    flex: 1;
-    padding: 10px;
-    background: var(--cream);
-    border-radius: 12px;
-    border: 2px solid var(--mauve);
-    font-weight: 600;
-    transition: .3s ease;
-    cursor: pointer;
-    text-align: center;
-    color: var(--deep-purple) !important; /* Fix teks hilang */
-}
-
-.nav-tabs .tab:hover {
-    background-color: var(--rose);
-}
-
-.nav-tabs .tab.active {
-    background: var(--dark-plum) !important;
-    color: var(--cream) !important;
-    transform: scale(1.05);
-}
-
-/* Textarea */
-textarea {
+.input {
     width: 100%;
-    padding: 12px;
-    height: 120px;
-    border: 2px solid var(--dark-plum);
-    border-radius: 12px;
-    background: var(--cream);
-    resize: none;
-    margin-top: 8px;
-    font-size: 15px;
-}
-
-#history-list {
-    padding: 0;
-    list-style: none;
-}
-
-#history-list li {
-    background: var(--cream);
-    padding: 12px;
-    border-radius: 10px;
-    border-left: 5px solid var(--mauve);
+    padding: 10px;
+    border: 1px solid #3B2D5E;
+    border-radius: 8px;
     margin-bottom: 10px;
+}
+
+.textarea {
+    height: 100px;
+}
+
+.history-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 5px #dcd8e6;
+}
+
+.tag {
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: white;
+    font-size: 12px;
+}
+
+.tag.great { background: #ffd700; color: black; }
+.tag.good { background: #7fbf6b; }
+.tag.average { background: #d88955; }
+.tag.bad { background: #cc5252; }
+
+.empty {
+    opacity: .6;
+    text-align: center;
+    margin-top: 20px;
 }

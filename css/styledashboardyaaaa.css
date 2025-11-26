@@ -1,4 +1,4 @@
-/* ==== COLOR PALETTE ==== */
+
 :root {
     --ungu-tua: #190019;
     --ungu-gelap: #2B124C;
@@ -11,7 +11,6 @@
     --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* ==== GLOBAL ==== */
 body {
     background: #f6f5f7;
     font-family: "poppins";

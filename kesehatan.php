@@ -1,3 +1,12 @@
+<?php 
+require "config/koneksi.php";
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?pesan=login_dulu");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -13,7 +22,7 @@
 <body>
 
     <div class="back">
-        <a href="" class="btn btn-light btn-outline-dark">← Back</a>
+        <a href="test.php" class="btn btn-light btn-outline-dark">← Back</a>
     </div>
 
     <!-- FORM SECTION -->
@@ -49,7 +58,7 @@
             <p id="totalScore"></p>
             <p id="kategoriFinal" style="font-weight:bold; color:#522B5B;"></p>
         </div>
-        
+
         <!-- MOTIVATION TEXT -->
         <div class="motivasi" id="motivasiText"> </div>
 

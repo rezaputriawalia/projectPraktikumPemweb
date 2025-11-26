@@ -1,3 +1,12 @@
+<?php 
+require "config/koneksi.php";
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?pesan=login_dulu");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -12,7 +21,7 @@
 
 <body>
     <div class="back">
-        <a href="" class="btn btn-light btn-outline-dark">← Back</a>
+        <a href="test.php" class="btn btn-light btn-outline-dark">← Back</a>
     </div>
 
     <div class="container" id="form-section">

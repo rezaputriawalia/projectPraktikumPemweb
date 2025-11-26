@@ -1,0 +1,119 @@
+/* ==== COLOR PALETTE ==== */
+:root {
+    --ungu-tua: #190019;
+    --ungu-gelap: #2B124C;
+    --ungu: #522B5B;
+    --ungu-muda: #854F6C;
+    --cream: #DFB6B2;
+    --cream-muda: #FBE4D8;
+
+    --radius: 20px;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ==== GLOBAL STYLES ==== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f6f5f7;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ==== CONTAINER ==== */
+.container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 450px;
+}
+
+/* ==== HEADER ==== */
+.container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--ungu-tua);
+    font-weight: 600;
+}
+
+/* ==== FORM STYLES ==== */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--ungu-gelap);
+    font-size: 14px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid var(--ungu-muda);
+    border-radius: var(--radius);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--ungu-tua);
+    outline: none;
+    box-shadow: 0 0 8px rgba(82, 43, 91, 0.3);
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ==== BUTTON ==== */
+button[type="submit"],
+button.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--ungu);
+    color: var(--cream-muda);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button.primary-btn:hover {
+    background: var(--ungu-gelap);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* ==== LINK BACK ==== */
+.back {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: var(--ungu);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back:hover {
+    color: var(--ungu-gelap);
+    text-decoration: underline;
+}
