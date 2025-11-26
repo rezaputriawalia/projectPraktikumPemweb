@@ -1,30 +1,52 @@
 <?php
 include "../config/koneksi.php";
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
-    $user_id = $_POST['user_id'];
-    $mood = $_POST['mood'];
-    $note = $_POST['note'];
-
-    $stmt = $koneksi->prepare("INSERT INTO mood (user_id, mood, note) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $user_id, $mood, $note);
-    $stmt->execute();
-
-    echo "success";
+// Pastikan user login
+if (!isset($_SESSION['id_user'])) {
+    echo json_encode(["error" => "not_logged_in"]);
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['user_id'])) {
+$user_id = $_SESSION['id_user'];
 
-    $user_id = $_GET['user_id'];
-    $result = $koneksi->query("SELECT * FROM mood WHERE user_id='$user_id' ORDER BY created_at DESC");
+// ================= POST: Simpan Mood =================
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    $logs = [];
-    while ($row = $result->fetch_assoc()) {
-        $logs[] = $row;
+    $mood = isset($_POST['mood']) ? mysqli_real_escape_string($koneksi, trim($_POST['mood'])) : '';
+    $note = isset($_POST['note']) ? mysqli_real_escape_string($koneksi, trim($_POST['note'])) : '';
+
+    if ($mood === '' || $note === '') {
+        echo json_encode(["error" => "invalid_input"]);
+        exit;
     }
 
-    echo json_encode($logs);
+    $query = "INSERT INTO mood (user_id, mood, note) VALUES ($user_id, '$mood', '$note')";
+    if (mysqli_query($koneksi, $query)) {
+        echo json_encode(["success" => true]);
+    } else {
+        echo json_encode(["error" => mysqli_error($koneksi)]);
+    }
+
+    exit;
+}
+
+// ================= GET: Ambil Mood =================
+if ($_SERVER['REQUEST_METHOD'] === "GET") {
+
+    $query = "SELECT * FROM mood WHERE user_id = $user_id ORDER BY created_at DESC";
+    $result = mysqli_query($koneksi, $query);
+
+    if ($result) {
+        $logs = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $logs[] = $row;
+        }
+        echo json_encode($logs);
+    } else {
+        echo json_encode(["error" => mysqli_error($koneksi)]);
+    }
+
+    exit;
 }
 ?>
