@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <title>Self Health Check</title>
     <link rel="stylesheet" href="css/k.css">
 </head>
@@ -37,17 +39,21 @@
     </div>
 
     <!-- RESULT SECTION -->
+    <!-- RESULT SECTION -->
     <div class="container result" id="result-section">
         <h2>Hasil Kesehatanmu ❤️</h2>
         <p>Ini rangkuman kamu ya (nama).</p>
-
+        
         <div class="score-box">
             <h3>Total Skor:</h3>
             <p id="totalScore"></p>
             <p id="kategoriFinal" style="font-weight:bold; color:#522B5B;"></p>
         </div>
+        
+        <!-- MOTIVATION TEXT -->
+        <div class="motivasi" id="motivasiText"> </div>
 
-        <h3>Kriteria Penilaian</h3>
+        <h3>Keterangan Penilaian</h3>
         <table class="table-kriteria">
             <tr>
                 <th>Skor</th>
@@ -199,6 +205,35 @@
             formSection.style.display = "none";
             resultSection.style.display = "block";
 
+            document.getElementById("totalScore").innerHTML = total;
+            document.getElementById("kategoriFinal").innerHTML = kategori;
+        }
+
+        function showResult() {
+            let total = answers.reduce((a, b) => a + b, 0);
+
+            let kategori =
+                total <= 10 ? "Tidak Sehat" :
+                total <= 20 ? "Kurang Sehat" :
+                total <= 25 ? "Sehat" :
+                "Sangat Sehat";
+
+            // Motivasi berdasarkan kategori
+            let motivasi = "";
+            if (total <= 10) {
+                motivasi = "Kamu lagi butuh perhatian ekstra nih. Pelan-pelan ya, kamu tetap berharga dan masih bisa jauh lebih baik dari ini. 🤍";
+            } else if (total <= 20) {
+                motivasi = "Kamu sudah berusaha, tapi masih ada beberapa hal yang perlu dirapikan. Satu langkah kecil setiap hari itu cukup, jangan keras sama diri sendiri. 🌱";
+            } else if (total <= 25) {
+                motivasi = "Kondisimu cukup baik! Pertahankan ritme sehat kamu dan terus dengarkan tubuhmu. Kamu hebat. 💪💖";
+            } else {
+                motivasi = "Kamu berada dalam kondisi yang sangat baik! Jaga pola hidupmu ya, kamu lagi ada di jalur yang benar banget. ✨";
+            }
+
+            formSection.style.display = "none";
+            resultSection.style.display = "block";
+
+            document.getElementById("motivasiText").innerHTML = `<p>${motivasi}</p>`;
             document.getElementById("totalScore").innerHTML = total;
             document.getElementById("kategoriFinal").innerHTML = kategori;
         }
