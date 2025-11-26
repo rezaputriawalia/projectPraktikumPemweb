@@ -13,8 +13,8 @@
 
 /* ==== GLOBAL ==== */
 body {
-    background: linear-gradient(145deg, var(--cream-muda), #fcf3ef);
-    font-family: "Poppins", sans-serif;
+    /* background: linear-gradient(145deg, var(--cream-muda), #fcf3ef); */
+    font-family: "Poppins";
     margin: 0;
     padding: 0;
 }

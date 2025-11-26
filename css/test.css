@@ -1,0 +1,120 @@
+body{
+    height: 100vh;
+    /* background-color: #522b5b57; */
+    /* background-color: #864f6cbd; */
+    background-color: #2b124c;
+    font-family: "Poppins";
+    padding: 50px;
+}
+
+.container{
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center;   /* tengah */
+    gap: 100px;                 /* jarak antar card */
+    margin-top: 20px;
+}
+
+.judul{
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.back{
+    background-color: white;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+}
+
+.back img{
+    width: 80px;
+    height: 80px;
+}
+
+.card {
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* biar mulai dari atas */
+    align-items: center;          /* posisi isi card ke tengah */
+    text-align: center;           /* teks ke tengah */
+    /* padding-bottom: 30px;         biar jarak bawah rapi */
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 120px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h3 {
+    color: #2B124C;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.card-body p {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* .iconTest{
+    margin-top: 35px;
+    font-size: 80px;
+    transform: rotate(270deg);
+} */
+
+.card-body button {
+    width: 50%;
+    background-color: #2B124C;      /* ungu soft */
+    color: #ffffff;
+    padding: 12px 22px;
+    font-size: 15px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    transition: 0.25s ease;
+    width: 100%;
+    margin-top: 10px;
+
+    /* shadow halus */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-body button:hover {
+    color: #2B124C;
+    /* background-color: #b9b5c5;    */
+    background-color: #bda9c5;   
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+.card-body button:active {
+    transform: scale(0.97);
+}
+
