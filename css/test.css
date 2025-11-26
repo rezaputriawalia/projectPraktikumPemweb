@@ -2,7 +2,7 @@ body{
     height: 100vh;
     /* background-color: #522b5b57; */
     /* background-color: #864f6cbd; */
-    background-color: #2b124c;
+    background-color: #f6f5f7;
     font-family: "Poppins";
     padding: 50px;
 }
@@ -21,12 +21,12 @@ body{
 }
 
 .judul{
-    color: #ffffff;
+    color: #000000;
     font-size: 24px;
 }
 
 .back{
-    background-color: white;
+    background-color: #f6f5f7;
     border-radius: 100%;
     width: 80px;
     height: 80px;
@@ -38,11 +38,12 @@ body{
 }
 
 .card {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     width: 400px;
     height: 400px;
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
     transition: 0.3s;
 
     display: flex;
