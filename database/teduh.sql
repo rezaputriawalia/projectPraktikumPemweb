@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2025 at 03:46 PM
+-- Generation Time: Nov 26, 2025 at 07:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,8 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `teduh`
 --
-CREATE DATABASE IF NOT EXISTS `teduh` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `teduh`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mood`
+--
+
+CREATE TABLE `mood` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `mood` enum('great','good','average','bad') NOT NULL,
+  `note` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -29,15 +41,56 @@ USE `teduh`;
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `jenis_kelamin` char(1) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `usia` int(11) NOT NULL,
-  PRIMARY KEY (`id_user`)
+  `usia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `mood`
+--
+ALTER TABLE `mood`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_mood` (`user_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `mood`
+--
+ALTER TABLE `mood`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `mood`
+--
+ALTER TABLE `mood`
+  ADD CONSTRAINT `fk_mood` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

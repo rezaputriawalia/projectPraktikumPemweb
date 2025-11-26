@@ -8,11 +8,9 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styledashboardyaaa.css">
     <title>Dashboard UI</title>
-
 </head>
 
 <body>
-
     <div class="main">
         <div class="header">
             <div class="title">Welcome, (nama)
@@ -20,16 +18,12 @@
             </div>
             <div class="profil">
                 <button class="profile-btn" onclick="toggleProfileMenu()">👤 Profil ▾</button>
-
                 <div class="dropdown-menu" id="profileMenu">
                     <a href="editprofil.php">✏ Edit Profil</a> <br>
                     <a href="logout.php" class="logout">🚪 Logout</a>
                 </div>
             </div>
-
-
         </div>
-
 
         <div class="cards">
             <div class="card">
@@ -92,8 +86,6 @@
             }
         });
     </script>
-
-
 
 </body>
 
