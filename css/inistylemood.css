@@ -8,8 +8,8 @@
 }
 
 body {
-  background: var(--cream);
-  font-family: "Poppins", sans-serif;
+  background: #f6f5f7;
+  font-family: "Poppins";
   margin: 0;
   padding: 0;
   color: var(--deep-purple);
