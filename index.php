@@ -1,3 +1,7 @@
+<?php 
+require "components/component.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,24 +20,32 @@
 
 <body>
     <div class="container">
-
+        <?php
+            if (isset($_GET['pesan'])) {
+                listAlert($_GET['pesan']);
+            }
+        ?>
+        <!-- <div class="alert alert-danger" role="alert">
+            Error : Password tidak sama
+        </div> -->
         <div class="form-container login-container">
             <form action="logic/auth.php" method="POST" autocomplete="off">
                 <h1>Login</h1>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <div class="content">
+                <input autocomplete="off" type="email" placeholder="Email" name="email" required>
+                <input autocomplete="new-password" type="password" placeholder="Password" name="password" required>
+                <!-- <div class="content">
                     <div class="checkbox">
                         <input type="checkbox" id="checkbox">
                         <label for="checkbox">Ingat Saya</label>
-                    </div>
+                    </div> -->
                     <!-- <div class="pass-link">
                         <a href="#">Forgot password?</a>
                     </div> -->
-                </div>
-                <button type="button" onclick="window.location.href='dashboard.php'">Login</button>
+                <!-- </div> -->
+                <!-- <button type="button" onclick="window.location.href='dashboard.php'">Login</button> -->
+                <button type="submit" name="login">Login</button>
                 <div class="text-center small">
-                Belum Punya Akun? <br> Silahkan register terlebih dahulu!
+                Belum Punya Akun? <br> Silahkan registrasi terlebih dahulu!
                 </div>
                 <!-- <span>or use your account</span>
                 <div class="social-container">
@@ -47,17 +59,18 @@
         <div class="form-container register-container">
             <form action="logic/auth.php" method="POST" autocomplete="off">
                 <h1>Register</h1>
-                <input type="text" placeholder="Nama Lengkap">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Konfirmasi Password">
-                <input type="number" placeholder="Usia">
-                <select class="select-gender">
+                <input  autocomplete="off" type="text" name="namaLengkap" placeholder="Nama Lengkap">
+                <input  autocomplete="off" type="email" name="email" placeholder="Email">
+                <input  autocomplete="new-password" type="password" name="password" placeholder="Password">
+                <input  autocomplete="new-password" type="password" name="confirmPassword" placeholder="Konfirmasi Password">
+                <input  autocomplete="off" type="number" name="usia" placeholder="Usia">
+                <select class="select-gender" name="jenKel">
                     <option value="">-- Pilih Jenis Kelamin --</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
+                    <option name="jenKel" value="Laki-laki">Laki-laki</option>
+                    <option name="jenKel" value="Perempuan">Perempuan</option>
                 </select>
-                <button type="button" onclick="window.location.href='dashboard.php'">Register</button>
+                <!-- <button type="button" onclick="window.location.href='dashboard.php'">Register</button> -->
+                <button type="submit" name="register">Register</button>
                 
                 <!-- <span>or use your account</span>
                 <div class="social-container">
@@ -89,5 +102,6 @@
     </div>
 
     <script src="js/index.js"></script>
+
 </body>
 </html>

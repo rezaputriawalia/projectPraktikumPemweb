@@ -1,3 +1,12 @@
+<?php 
+require "config/koneksi.php";
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?pesan=login_dulu");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +23,7 @@
 <body>
     <div class="main">
         <div class="header">
-            <div class="title">Welcome, (nama)
+            <div class="title">Welcome, <?= $_SESSION['username'] ?>
                 <h5 style="width : 75%">Dari kelemahan hingga pencapaian, kami menemanimu dalam perjalanan menerima dan menyayangi diri sendiri sepenuhnya.</h5>
             </div>
             <div class="profil">
