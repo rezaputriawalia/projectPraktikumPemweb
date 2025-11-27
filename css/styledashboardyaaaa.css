@@ -60,11 +60,13 @@ body {
 
 /* Tombol profil */
 .profile-btn {
+    width: 100px;
+    height: 50px;
     background: white;
     color: #3B2D5E;
     border: 6px solid var(--mauve);
     padding: 5px 5px;
-    border-radius: 14px;
+    border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
@@ -72,7 +74,7 @@ body {
 }
 
 .profile-btn:hover {
-    background: var(--rose);
+    background: #e1d6f3;
     box-shadow: var(--shadow);
     transform: translateY(-2px);
 }
@@ -82,7 +84,7 @@ body {
     display: none;
     position: absolute;
     right: 0;
-    background: var(--cream);
+    /* background: var(--cream); */
     width: 180px;
     border: 2px solid var(--mauve);
     border-radius: 12px;
@@ -106,17 +108,17 @@ body {
 .dropdown-menu a:hover {
     color: var(--deep-purple);
     font-weight: 600;
-    background: #f7c9c9;
+    background: #e1d6f3;
 }
 
 /* Logout warna berbeda */
-.dropdown-menu .logout {
-    color: #9e2626;
-    font-weight: 600;
-}
+/* .dropdown-menu .logout { */
+    /* color: #9e2626; */
+    /* font-weight: 600; */
+/* } */
 
 .dropdown-menu .logout:hover {
-    background: #f7c9c9;
+    background: #e1d6f3;
 }
 
 /* ==== CARD WRAPPER ==== */

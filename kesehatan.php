@@ -1,9 +1,24 @@
-<?php 
+<?php
 require "config/koneksi.php";
 session_start();
 
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?pesan=login_dulu");
+}
+
+$query = mysqli_query($connect,
+"SELECT q.question, c.category 
+     FROM questionkesehatan q 
+     JOIN questioncategory c ON q.id_category = c.id_category
+     ORDER BY q.id_question ASC"
+);
+$questions = [];
+
+while ($row = mysqli_fetch_assoc($query)) {
+    $questions[] = [
+        "text" => $row['question'],
+        "category" => $row['category']
+    ];
 }
 ?>
 
@@ -92,56 +107,59 @@ if (!isset($_SESSION['username'])) {
 
 
     <script>
+        const flat = <?php echo json_encode($questions); ?>;
+        let step = 0;
+        let answers = Array(flat.length).fill(null);
         /* -----------------------------
             DATA PERTANYAAN
         ----------------------------- */
-        const data = {
-            tidur: [
-                "Saya tidur 7–8 jam setiap malam.",
-                "Saya tidur dan bangun di jam yang sama.",
-                "Saya jarang begadang.",
-                "Saya bangun dengan segar.",
-                "Saya tidak memakai gadget 30 menit sebelum tidur.",
-                "Saya jarang terbangun tengah malam.",
-                "Saya bisa tidur tanpa kesulitan.",
-                "Saya tidak tidur terlalu larut."
-            ],
-            makan: [
-                "Saya sarapan sebelum memulai aktivitas.",
-                "Saya makan 3 kali sehari teratur.",
-                "Saya makan sayur setiap hari.",
-                "Saya makan buah setiap hari.",
-                "Saya mengurangi makanan tinggi gula.",
-                "Saya menghindari junk food.",
-                "Saya tidak makan berlebihan malam hari.",
-                "Saya konsumsi protein cukup.",
-                "Saya tidak sering ngemil tidak sehat.",
-                "Saya mengatur porsi makan."
-            ],
-            fisik: [
-                "Saya olahraga 3x seminggu.",
-                "Saya berjalan kaki/aktivitas ringan setiap hari.",
-                "Saya tidak duduk terlalu lama.",
-                "Saya melakukan peregangan tubuh.",
-                "Saya menjaga postur tubuh.",
-                "Saya melakukan aktivitas rumah.",
-                "Saya tidak sedentari seharian."
-            ],
-            hidrasi: [
-                "Saya minum 6–8 gelas air.",
-                "Saya batasi kopi/soda.",
-                "Saya tidak merokok.",
-                "Saya menjaga kebersihan tubuh.",
-                "Saya punya waktu istirahat yang cukup."
-            ]
-        };
+        // const data = {
+        //     tidur: [
+        //         "Saya tidur 7–8 jam setiap malam.",
+        //         "Saya tidur dan bangun di jam yang sama.",
+        //         "Saya jarang begadang.",
+        //         "Saya bangun dengan segar.",
+        //         "Saya tidak memakai gadget 30 menit sebelum tidur.",
+        //         "Saya jarang terbangun tengah malam.",
+        //         "Saya bisa tidur tanpa kesulitan.",
+        //         "Saya tidak tidur terlalu larut."
+        //     ],
+        //     makan: [
+        //         "Saya sarapan sebelum memulai aktivitas.",
+        //         "Saya makan 3 kali sehari teratur.",
+        //         "Saya makan sayur setiap hari.",
+        //         "Saya makan buah setiap hari.",
+        //         "Saya mengurangi makanan tinggi gula.",
+        //         "Saya menghindari junk food.",
+        //         "Saya tidak makan berlebihan malam hari.",
+        //         "Saya konsumsi protein cukup.",
+        //         "Saya tidak sering ngemil tidak sehat.",
+        //         "Saya mengatur porsi makan."
+        //     ],
+        //     fisik: [
+        //         "Saya olahraga 3x seminggu.",
+        //         "Saya berjalan kaki/aktivitas ringan setiap hari.",
+        //         "Saya tidak duduk terlalu lama.",
+        //         "Saya melakukan peregangan tubuh.",
+        //         "Saya menjaga postur tubuh.",
+        //         "Saya melakukan aktivitas rumah.",
+        //         "Saya tidak sedentari seharian."
+        //     ],
+        //     hidrasi: [
+        //         "Saya minum 6–8 gelas air.",
+        //         "Saya batasi kopi/soda.",
+        //         "Saya tidak merokok.",
+        //         "Saya menjaga kebersihan tubuh.",
+        //         "Saya punya waktu istirahat yang cukup."
+        //     ]
+        // };
 
-        const categories = ["tidur", "makan", "fisik", "hidrasi"];
-        let flat = [];
-        categories.forEach(c => data[c].forEach(q => flat.push(q)));
+        // const categories = ["tidur", "makan", "fisik", "hidrasi"];
+        // let flat = [];
+        // categories.forEach(c => data[c].forEach(q => flat.push(q)));
 
-        let step = 0;
-        let answers = Array(30).fill(null);
+        // let step = 0;
+        // let answers = Array(30).fill(null);
 
         const questionBox = document.getElementById("questionBox");
         const categoryTitle = document.getElementById("categoryTitle");
@@ -158,7 +176,7 @@ if (!isset($_SESSION['username'])) {
 
             setTimeout(() => {
                 questionBox.innerHTML = `
-            <div>${flat[step]}</div>
+            <div>${flat[step].text}</div>
             <div class="options">
                 <label><input type="radio" name="answer" value="1" ${answers[step] == 1 ? 'checked' : ''}><span>Ya</span></label>
                 <label><input type="radio" name="answer" value="0" ${answers[step] == 0 ? 'checked' : ''}><span>Tidak</span></label>
@@ -169,10 +187,12 @@ if (!isset($_SESSION['username'])) {
 
             let catIndex = step < 8 ? 0 : step < 18 ? 1 : step < 25 ? 2 : 3;
             const titles = ["A. Pola Tidur", "B. Pola Makan", "C. Aktivitas Fisik", "D. Hidrasi"];
-            categoryTitle.innerHTML = titles[catIndex];
+            categoryTitle.innerHTML = flat[step].category;
 
-            stepText.innerHTML = `Step ${step + 1} / 30`;
-            progressBar.style.width = ((step + 1) / 30 * 100) + "%";
+            // stepText.innerHTML = `Step ${step + 1} / 30`;
+            // progressBar.style.width = ((step + 1) / 30 * 100) + "%";
+            stepText.innerHTML = `Step ${step + 1} / ${flat.length}`;
+            progressBar.style.width = ((step + 1) / flat.length * 100) + "%";
         }
 
         renderQuestion();
@@ -245,6 +265,22 @@ if (!isset($_SESSION['username'])) {
             document.getElementById("motivasiText").innerHTML = `<p>${motivasi}</p>`;
             document.getElementById("totalScore").innerHTML = total;
             document.getElementById("kategoriFinal").innerHTML = kategori;
+
+            saveToDatabase(total, kategori);
+        }
+
+        function saveToDatabase(total, kategori) {
+            const formData = new FormData();
+            formData.append("score", total);
+            formData.append("keterangan", kategori);
+
+            fetch("logic/hasilTestKesehatan.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.text())
+            .then(res => console.log("Server:", res))
+            .catch(err => console.error(err));
         }
     </script>
 

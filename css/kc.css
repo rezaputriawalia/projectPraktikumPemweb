@@ -15,6 +15,7 @@ body {
 
 .back {
     padding: 20px;
+    text-decoration: none;
 }
 
 .back .btn {
@@ -110,7 +111,6 @@ td {
     padding: 8px;
 }
 
-/* Circle Chart */
 #circleChart {
     width: 220px;
     height: 220px;

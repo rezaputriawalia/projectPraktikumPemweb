@@ -23,8 +23,8 @@ if (!isset($_SESSION['username'])) {
 <body>
     <div class="main">
         <div class="header">
-            <div class="title">Welcome, <?= $_SESSION['username'] ?>
-                <h5 style="width : 75%">Dari kelemahan hingga pencapaian, kami menemanimu dalam perjalanan menerima dan menyayangi diri sendiri sepenuhnya.</h5>
+            <div class="title"><span style="font-size: 24px; font-weight: bold;">Welcome, <?= $_SESSION['username'] ?>!</span>
+                <p style="width : 75%; margin-top: 15px;">Dari kelemahan hingga pencapaian, kami menemanimu dalam perjalanan menerima dan menyayangi diri sendiri sepenuhnya.</p>
             </div>
             <div class="profil">
                 <button class="profile-btn" onclick="toggleProfileMenu()">👤 Profil ▾</button>
