@@ -34,7 +34,7 @@ $user = mysqli_fetch_assoc($query);
 
         <label>Nama Lengkap</label>
         <input type="text" name="namaLengkap" 
-               value="<?= htmlspecialchars($user['nama_lengkap']) ?>" required>
+               value="<?= htmlspecialchars($user['nama_lengkap']) ?>" required readonly>
 
         <label>Email</label>
         <input type="email" name="email" 
