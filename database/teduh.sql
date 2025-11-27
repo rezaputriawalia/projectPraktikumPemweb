@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2025 at 04:16 PM
+-- Generation Time: Nov 27, 2025 at 08:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,15 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detailtest`
+-- Table structure for table `mood`
 --
 
-CREATE TABLE `detailtest` (
-  `id_detail` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  `skor` int(11) NOT NULL,
-  `id_test` int(11) NOT NULL
+CREATE TABLE `mood` (
+  `id_mood` int(11) NOT NULL,
+  `mood` varchar(50) NOT NULL,
+  `note` varchar(255) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mood`
+--
+
+INSERT INTO `mood` (`id_mood`, `mood`, `note`, `id_user`, `created_at`) VALUES
+(3, 'average', 'ini punya admin', 2, '0000-00-00'),
+(5, 'great', 'horee', 3, '2025-11-27');
 
 -- --------------------------------------------------------
 
@@ -58,20 +67,20 @@ INSERT INTO `questioncategory` (`id_category`, `category`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questiontest`
+-- Table structure for table `questionkesehatan`
 --
 
-CREATE TABLE `questiontest` (
+CREATE TABLE `questionkesehatan` (
   `id_question` int(11) NOT NULL,
   `question` varchar(255) NOT NULL,
   `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `questiontest`
+-- Dumping data for table `questionkesehatan`
 --
 
-INSERT INTO `questiontest` (`id_question`, `question`, `id_category`) VALUES
+INSERT INTO `questionkesehatan` (`id_question`, `question`, `id_category`) VALUES
 (1, 'Saya tidur 7–8 jam setiap malam', 1),
 (2, 'Saya tidur dan bangun di jam yang hampir sama setiap hari', 1),
 (3, 'Saya jarang begadang tanpa alasan penting', 1),
@@ -111,10 +120,22 @@ INSERT INTO `questiontest` (`id_question`, `question`, `id_category`) VALUES
 
 CREATE TABLE `test` (
   `id_test` int(11) NOT NULL,
+  `jenis_test` varchar(50) NOT NULL,
   `skortotal` int(11) NOT NULL,
   `ket` varchar(50) NOT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id_test`, `jenis_test`, `skortotal`, `ket`, `id_user`, `created_at`) VALUES
+(1, '', 30, 'Sangat Sehat', 2, '2025-11-27'),
+(2, 'Pola Hidup Sehat', 30, 'Sangat Sehat', 3, '2025-11-27'),
+(3, 'Pola Hidup Sehat', 30, 'Sangat Sehat', 3, '2025-11-27'),
+(4, 'Pola Hidup Sehat', 22, 'Sehat', 4, '2025-11-27');
 
 -- --------------------------------------------------------
 
@@ -136,20 +157,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nama_lengkap`, `jenis_kelamin`, `email`, `password`, `usia`) VALUES
-(2, 'putri', 'Perempuan', 'admin@gmail.com', '1234', 20),
-(3, 'putri awalia', 'Perempuan', 'putri@gmail.com', '12345', 20);
+(2, 'putri', 'Perempuan', 'admin@gmail.com', '1234', 21),
+(3, 'safna', 'Perempuan', 'putri@gmail.com', '12345', 20),
+(4, 'safna', 'Perempuan', 'safna@gmail.com', '123', 21);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `detailtest`
+-- Indexes for table `mood`
 --
-ALTER TABLE `detailtest`
-  ADD PRIMARY KEY (`id_detail`),
-  ADD KEY `fk_test` (`id_test`),
-  ADD KEY `fk_question` (`id_question`);
+ALTER TABLE `mood`
+  ADD PRIMARY KEY (`id_mood`),
+  ADD KEY `fk_mood` (`id_user`);
 
 --
 -- Indexes for table `questioncategory`
@@ -158,9 +179,9 @@ ALTER TABLE `questioncategory`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `questiontest`
+-- Indexes for table `questionkesehatan`
 --
-ALTER TABLE `questiontest`
+ALTER TABLE `questionkesehatan`
   ADD PRIMARY KEY (`id_question`),
   ADD KEY `fk_category` (`id_category`);
 
@@ -182,10 +203,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `detailtest`
+-- AUTO_INCREMENT for table `mood`
 --
-ALTER TABLE `detailtest`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mood`
+  MODIFY `id_mood` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `questioncategory`
@@ -194,38 +215,37 @@ ALTER TABLE `questioncategory`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `questiontest`
+-- AUTO_INCREMENT for table `questionkesehatan`
 --
-ALTER TABLE `questiontest`
+ALTER TABLE `questionkesehatan`
   MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_test` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `detailtest`
+-- Constraints for table `mood`
 --
-ALTER TABLE `detailtest`
-  ADD CONSTRAINT `fk_question` FOREIGN KEY (`id_question`) REFERENCES `questiontest` (`id_question`),
-  ADD CONSTRAINT `fk_test` FOREIGN KEY (`id_test`) REFERENCES `test` (`id_test`);
+ALTER TABLE `mood`
+  ADD CONSTRAINT `fk_mood` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
--- Constraints for table `questiontest`
+-- Constraints for table `questionkesehatan`
 --
-ALTER TABLE `questiontest`
+ALTER TABLE `questionkesehatan`
   ADD CONSTRAINT `fk_category` FOREIGN KEY (`id_category`) REFERENCES `questioncategory` (`id_category`);
 
 --

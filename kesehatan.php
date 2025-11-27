@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     <div class="container" id="form-section">
 
         <h2 align="center">Self Health Check</h2>
-        <p>Isi pelan-pelan ya (nama), silahkan isi sesuai kondisi kamu sekarang ❤️</p>
+        <p>Isi pelan-pelan ya <?= $_SESSION['username'] ?>, silahkan isi sesuai kondisi kamu sekarang ❤️</p>
 
         <div class="step-text" id="stepText">Step 1 / 30</div>
 
@@ -66,7 +66,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     <!-- RESULT SECTION -->
     <div class="container result" id="result-section">
         <h2>Hasil Kesehatanmu ❤️</h2>
-        <p>Ini rangkuman kamu ya (nama).</p>
+        <p>Ini rangkuman kamu ya <?= $_SESSION['username'] ?>.</p>
         
         <div class="score-box">
             <h3>Total Skor:</h3>

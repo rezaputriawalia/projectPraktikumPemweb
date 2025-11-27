@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="cards">
             <div class="card">
-                <img src="tes.png" class="card-img-top" alt="gambar">
+                <img src="asset/image/tes.png" class="card-img-top" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Ayo Kenali Dirimu Melalui Tes Disini!</h4>
                     <p class="card-text">Belajar menerjemahkan bahasa rasa sakit dan kelelahan menjadi langkah-langkah nyata menuju pemulihan yang abadi.</p>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="card">
-                <img src="mood.png" alt="gambar">
+                <img src="asset/image/mood.png" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Catat Mood Harianmu!</h4>
                     <p class="card-text">Jangan Menunggu Badai Berlalu, Belajarlah Menari di Tengah Hujan.</p>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="section">
             <div class="card" style="width: 24rem;">
-                <img src="artikel2.png" class="card-img-top" alt="gambar">
+                <img src="asset/image/artikel2.png" class="card-img-top" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Pola Hidup Sehat Remaja</h4>
                     <p class="card-text">Semua orang pasti ingin selalu hidup sehat dan terhindar dari berbagai penyakit. Sebab, dengan tubuh dan pikiran yang selalu sehat, seagala aktivitas yang kita kerjakan akan selesai lebih cepat.</p>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="card" style="width: 24rem;">
-                <img src="artikel1.png" class="card-img-top" alt="gambar">
+                <img src="asset/image/artikel1.png" class="card-img-top" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Terlalu Sering Begadang, Ini Dampaknya pada Tubuh</h4>
                     <p class="card-text">Terlalu sering begadang membuat seseorang kurang tidur. Jika dilakukan sesekali saja tidak masalah. Namun jika terlalu sering, ada banyak sekali dampak kesehatan yang bisa saja terjadi. </p>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="card" style="width: 24rem;">
-                <img src="artikel3.png" class="card-img-top" alt="gambar">
+                <img src="asset/image/artikel3.png" class="card-img-top" alt="gambar">
                 <div class="card-body">
                     <h4 class="card-title">Mood Swing belum Tentu Bipolar</h4>
                     <p class="card-text">Seseorang dapat dipertimbangkan bipolar jika mengalami gejala-gejala depresi, manik, atau hipomanik. Namun, selain keluhan yang ada saat ini, penting untuk mengetahui adanya episode mood di masa lalu beserta jumlah, frekuensi, intensitas dan durasinya.</p>

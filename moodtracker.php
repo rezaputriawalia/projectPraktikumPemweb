@@ -3,7 +3,7 @@ session_start();
 include "config/koneksi.php";
 
 if (!isset($_SESSION['id_user'])) {
-    header("Location: login.php");
+    header("Location: index.php?pesan=login_dulu");
     exit;
 }
 
