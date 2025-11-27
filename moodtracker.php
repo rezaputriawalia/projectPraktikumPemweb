@@ -12,8 +12,8 @@ $user_id = $_SESSION['id_user'];
 // Handle delete request
 if (isset($_GET['delete_id'])) {
     $delete_id = (int)$_GET['delete_id'];
-    $connect->query("DELETE FROM mood WHERE id = $delete_id AND user_id = $user_id");
-    header("Location: mood.php"); // refresh halaman
+    $connect->query("DELETE FROM mood WHERE id_mood = $delete_id AND id_user = $user_id");
+    header("Location: moodtracker.php"); // refresh halaman
     exit;
 }
 
@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($mood && $note) {
         $mood = $connect->real_escape_string($mood);
         $note = $connect->real_escape_string($note);
-        $connect->query("INSERT INTO mood (user_id, mood, note) VALUES ($user_id, '$mood', '$note')");
-        header("Location: mood.php"); // refresh setelah insert
+        $connect->query("INSERT INTO mood (id_user, mood, note) VALUES ($user_id, '$mood', '$note')");
+        header("Location: moodtracker.php"); // refresh setelah insert
         exit;
     }
 }
 
 // Ambil data mood user
-$result = $connect->query("SELECT * FROM mood WHERE user_id = $user_id ORDER BY created_at DESC");
+$result = $connect->query("SELECT * FROM mood WHERE id_user = $user_id ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $result = $connect->query("SELECT * FROM mood WHERE user_id = $user_id ORDER BY 
                     <small><?= $row['created_at'] ?></small>
                 </div>
                 <div>
-                    <a href="dashboard.php?delete_id=<?= $row['user_id'] ?>" class="btn btn-sm btn-danger"
+                    <a href="moodtracker.php?delete_id=<?= $row['id_mood'] ?>" class="btn btn-sm btn-danger"
                        onclick="return confirm('Yakin mau hapus mood ini?')">Hapus</a>
                 </div>
             </div>

@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card-body">
                     <h3>Test Pola Hidup Sehat</h3>
                     <p>Pilih test ini biar kamu tau seberapa sehat hidupmu!</p>
-                    <button type="button">Mulai Test</button>
+                    <a href="kesehatan.php"><button type="button">Mulai Test</button></a>
                 </div>
             </div>
             <div class="card">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="card-body">
                     <h3>Test Kecemasan</h3>
                     <p>Kenali sinyal kecemasan dalam dirimu dan pahami bagaimana perasaanmu belakangan ini!</p>
-                    <button type="button">Mulai Test</button>
+                    <a href="kecemasan.php"><button type="button">Mulai Test</button></a>
                 </div>
             </div>
         </div>
